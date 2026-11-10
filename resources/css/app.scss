@@ -1,0 +1,17 @@
+// Ardia SOC theme. Values come from the Figma hi-fi mockups.
+// Bootstrap variables must be set BEFORE Bootstrap is imported.
+$primary: #0B5ED7;
+$body-bg: #F4F6F9;
+$body-color: #212529;
+$border-color: #DEE2E6;
+$body-secondary-color: #5C636A;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-family-monospace: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+@import "bootstrap/scss/bootstrap";
+
+// SOC-specific colours used by the sidebar (Hi-Fi 1).
+:root {
+    --soc-sidebar-bg: #1B2533;
+    --soc-sidebar-active: #2D3B50;
+}
