@@ -9,7 +9,7 @@ return [
         'min_length' => 12,
         // FR11 / Q12: mixed character types. NIST SP 800-63B-4 advises
         // against composition rules, so this can be switched off.
-        'require_mixed_types' => (bool) env('SOC_PASSWORD_MIXED_TYPES', true),
+        'require_mixed_types' => (bool) env('SOC_PASSWORD_MIXED_TYPES', false),
         // FR11: no reuse of recent passwords (depth chosen in plan, open decision 3).
         'history' => 5,
     ],
