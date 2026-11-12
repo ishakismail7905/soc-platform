@@ -24,12 +24,17 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-       protected function casts(): array
+    protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'role' => Role::class,
+            'is_active' => 'boolean',
+            'locked_at' => 'datetime',
+            'must_change_password' => 'boolean',
+            'password_changed_at' => 'datetime',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -41,6 +46,11 @@ class User extends Authenticatable
     public function clients(): BelongsToMany
     {
         return $this->belongsToMany(Client::class)->withTimestamps();
+    }
+
+    public function passwordHistories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(PasswordHistory::class);
     }
 
     /**
