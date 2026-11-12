@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Enums\Role;
+use App\Models\Client;
 
 /**
  * @extends Factory<User>
@@ -41,5 +43,17 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function withRole(Role $role): static
+    {
+        return $this->state(fn () => ['role' => $role]);
+    }
+
+    public function forClients(Client ...$clients): static
+    {
+        return $this->afterCreating(
+            fn (User $user) => $user->clients()->attach(array_map(fn (Client $c) => $c->id, $clients))
+        );
     }
 }
