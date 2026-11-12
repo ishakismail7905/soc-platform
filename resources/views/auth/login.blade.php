@@ -8,6 +8,10 @@
         <h1 class="h4 mb-1">Sign in</h1>
         <p class="text-body-secondary small mb-4">Use your individual account. Shared logins are not allowed.</p>
 
+        @if (session('status'))
+            <div class="alert alert-info py-2 small" role="status">{{ session('status') }}</div>
+        @endif
+        
         @if ($errors->any())
             <div class="alert alert-danger py-2 small" role="alert">{{ $errors->first() }}</div>
         @endif
