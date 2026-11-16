@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Enums\Role;
 use App\Models\Client;
+use Illuminate\Support\Collection;
+use Laravel\Fortify\RecoveryCode;
+use PragmaRX\Google2FA\Google2FA;
 
 /**
  * @extends Factory<User>
@@ -55,5 +58,16 @@ class UserFactory extends Factory
         return $this->afterCreating(
             fn (User $user) => $user->clients()->attach(array_map(fn (Client $c) => $c->id, $clients))
         );
+    }
+
+    public function twoFactorConfirmed(): static
+    {
+        return $this->state(fn () => [
+            'two_factor_secret' => encrypt(app(Google2FA::class)->generateSecretKey()),
+            'two_factor_recovery_codes' => encrypt(json_encode(
+                Collection::times(8, fn () => RecoveryCode::generate())->all()
+            )),
+            'two_factor_confirmed_at' => now(),
+        ]);
     }
 }

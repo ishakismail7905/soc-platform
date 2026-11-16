@@ -69,4 +69,16 @@ class LoginTest extends TestCase
         $this->assertGuest();
         $this->assertDatabaseHas('activity_logs', ['event' => AuditEvent::AUTH_LOGOUT]);
     }
+
+    public function test_home_sends_guests_to_sign_in(): void
+    {
+        $this->get('/')->assertRedirect('/login');
+    }
+
+    public function test_home_sends_signed_in_users_to_their_dashboard(): void
+    {
+        $this->actingAsRole(Role::SocAnalyst);
+
+        $this->get('/')->assertRedirect('/dashboard');
+    }
 }

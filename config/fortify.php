@@ -165,8 +165,11 @@ return [
         // Self-registration OFF: only the Super Admin creates accounts (FR-13).
         // Email password reset OFF: email notifications are out of scope (Section 1.5.2);
         // the Super Admin issues a temporary password instead.
-        // Profile updates OFF for now; two-factor is switched on in Task 6.
         Features::updatePasswords(),
+        Features::twoFactorAuthentication([
+            'confirm' => true,          // 2FA only counts once the user proves the app works
+            'confirmPassword' => true,  // re-enter the password before turning 2FA on or off
+        ]),
     ],
 
 ];

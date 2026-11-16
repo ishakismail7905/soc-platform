@@ -14,6 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
             'account.usable' => \App\Http\Middleware\EnsureAccountIsUsable::class,
+            'security.setup' => \App\Http\Middleware\EnsureSecuritySetupComplete::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

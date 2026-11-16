@@ -15,6 +15,8 @@ final class AuditEvent
     public const AUTH_PASSWORD_CHANGED = 'PASSWORD_CHANGED';
     public const AUTH_2FA_ENABLED = 'TWO_FACTOR_ENABLED';
     public const AUTH_2FA_DISABLED = 'TWO_FACTOR_DISABLED';
+    public const AUTH_2FA_FAILED = 'TWO_FACTOR_FAILED';
+    public const AUTH_RECOVERY_CODE_USED = 'RECOVERY_CODE_USED';
 
     public const USER_CREATED = 'USER_CREATED';
     public const USER_UPDATED = 'USER_UPDATED';

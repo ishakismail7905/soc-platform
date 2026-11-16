@@ -11,13 +11,25 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Enums\Role;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 
 #[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
+#[Hidden(['password', 'remember_token', 'two_factor_secret', 'two_factor_recovery_codes'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+
+    /**
+     * Defaults for a brand-new user, matching the database column defaults.
+     * Without these, a freshly created user has is_active = null until it is
+     * reloaded, and the fail-closed account.usable check treats null as inactive.
+     */
+    protected $attributes = [
+        'is_active' => true,
+        'failed_login_attempts' => 0,
+        'must_change_password' => false,
+    ];
 
     /**
      * Get the attributes that should be cast.
@@ -35,6 +47,7 @@ class User extends Authenticatable
             'must_change_password' => 'boolean',
             'password_changed_at' => 'datetime',
             'last_login_at' => 'datetime',
+            'two_factor_confirmed_at' => 'datetime',
         ];
     }
 

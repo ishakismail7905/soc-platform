@@ -23,6 +23,8 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::loginView(fn () => view('auth.login'));
         Fortify::authenticateUsing(fn (Request $request) => app(AuthenticateUser::class)($request));
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+        Fortify::twoFactorChallengeView(fn () => view('auth.two-factor-challenge'));
+        Fortify::confirmPasswordView(fn () => view('auth.confirm-password'));
 
         // NFR-1 rate limiting. Set above the 5-attempt lockout (Task 5),
         // so a user meets the lockout message first, not a throttle.
