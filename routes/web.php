@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SecurityController;
 use Illuminate\Support\Facades\Route;
@@ -17,5 +18,13 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
 
     Route::middleware('security.setup')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+        // Users & Roles (wireframe 14). Super Admin only: Table 3.2 users.manage.
+        Route::middleware('can:users.manage')->prefix('admin/users')->name('admin.users.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('/permissions', [UserController::class, 'permissions'])->name('permissions');
+            Route::get('/create', [UserController::class, 'create'])->name('create');
+            Route::post('/', [UserController::class, 'store'])->name('store');
+        });
     });
 });

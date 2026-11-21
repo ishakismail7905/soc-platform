@@ -40,6 +40,12 @@ class SecurityHeaders
             $headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
         }
 
+        // Signed-in pages hold incident and account data: never keep them in the browser
+        // cache, so the Back button on a shared workstation can't bring them back.
+        if ($request->user()) {
+            $headers->set('Cache-Control', 'no-store, private');
+        }
+
         return $response;
     }
 }
