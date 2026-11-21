@@ -92,4 +92,30 @@ class User extends Authenticatable
 
         return $ids === null || in_array($id, $ids, true);
     }
+
+    /** Top-bar scope chip: "All clients", "Read-only" or the client names (wireframes 03, 14, 15). */
+    public function clientScopeLabel(): string
+    {
+        if ($this->role === Role::Auditor) {
+            return 'Read-only';
+        }
+
+        if ($this->role?->seesAllClients()) {
+            return 'All clients';
+        }
+
+        $names = $this->clients()->orderBy('name')->pluck('name');
+
+        return $names->isEmpty() ? 'No clients' : $names->join(', ');
+    }
+
+    /** Avatar letters, e.g. "Demo Manager" -> "DM". */
+    public function initials(): string
+    {
+        return collect(preg_split('/\s+/', trim((string) $this->name)))
+            ->filter()
+            ->take(2)
+            ->map(fn (string $word) => mb_strtoupper(mb_substr($word, 0, 1)))
+            ->join('');
+    }
 }

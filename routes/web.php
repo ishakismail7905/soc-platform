@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SecurityController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,6 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
     Route::get('/security', [SecurityController::class, 'edit'])->name('security.edit');
 
     Route::middleware('security.setup')->group(function () {
-        // Placeholder until Task 7 builds the real dashboard.
-        Route::get('/dashboard', fn () => 'Dashboard placeholder (Task 7)')->name('dashboard');
+        Route::get('/dashboard', DashboardController::class)->name('dashboard');
     });
 });
