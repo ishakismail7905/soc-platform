@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,6 +19,17 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
 
         $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
+
+        // Where guests go when a page needs sign-in. If this browser was signed in
+        // and now has no session, the 15-minute idle timeout ended it (wireframe 20).
+        $middleware->redirectGuestsTo(function (Request $request) {
+            if ($request->hasCookie(\App\Listeners\TrackSignedInBrowser::COOKIE)) {
+                $request->session()->flash('timeout', true);
+                Cookie::queue(Cookie::forget(\App\Listeners\TrackSignedInBrowser::COOKIE));
+            }
+
+            return route('login');
+        });
 
     })
     ->withExceptions(function (Exceptions $exceptions): void {

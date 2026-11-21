@@ -11,6 +11,13 @@
         @if (session('status'))
             <div class="alert alert-info py-2 small" role="status">{{ session('status') }}</div>
         @endif
+
+        @if (session('timeout'))
+            <div class="alert alert-warning py-2 small" role="status">
+                <strong class="d-block">Session ended</strong>
+                You were signed out after 15 minutes of inactivity or because the browser was closed. Sign in again to continue.
+            </div>
+        @endif
         
         @if ($errors->any())
             <div class="alert alert-danger py-2 small" role="alert">{{ $errors->first() }}</div>
