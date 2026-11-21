@@ -15,3 +15,6 @@ $font-family-monospace: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monos
     --soc-sidebar-bg: #1B2533;
     --soc-sidebar-active: #2D3B50;
 }
+
+// Sign-in, 2FA and security pages: narrow centred column (no inline styles, CSP)
+.auth-container { max-width: 420px; }

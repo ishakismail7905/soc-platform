@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'account.usable' => \App\Http\Middleware\EnsureAccountIsUsable::class,
             'security.setup' => \App\Http\Middleware\EnsureSecuritySetupComplete::class,
         ]);
+
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

@@ -7,7 +7,7 @@
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 <body class="d-flex align-items-center min-vh-100 py-4">
-    <main class="container" style="max-width: 420px;">
+    <main class="container auth-container">
         <div class="text-center mb-4">
             <div class="fw-bold fs-4">Ardia Nexus SOC</div>
             <div class="text-body-secondary small">Security Operations Centre</div>
