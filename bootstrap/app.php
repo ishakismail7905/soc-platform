@@ -36,4 +36,16 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->shouldRenderJsonWhen(
             fn (Request $request) => $request->is('api/*') || $request->expectsJson(),
         );
+        // FR-10 / FR-14: every refused request is a security event, whether it came from
+        // a can: check or from a scoped lookup (abort(403)). Logged, then the normal 403 page.
+        $exceptions->render(function (\Symfony\Component\HttpKernel\Exception\HttpExceptionInterface $e, Request $request) {
+            if ($e->getStatusCode() === 403 && $request->user()) {
+                rescue(fn () => app(\App\Services\ActivityLogger::class)->log(\App\Support\AuditEvent::ACCESS_DENIED, null, [
+                    'url' => $request->path(),
+                    'method' => $request->method(),
+                ]));
+            }
+
+            return null; // let Laravel draw the 403 page from Task 7C
+        });
     })->create();

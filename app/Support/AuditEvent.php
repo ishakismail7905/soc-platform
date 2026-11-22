@@ -29,6 +29,8 @@ final class AuditEvent
 
     public const CLIENT_CREATED = 'CLIENT_CREATED';
     public const CLIENT_UPDATED = 'CLIENT_UPDATED';
+    public const CLIENT_DEACTIVATED = 'CLIENT_DEACTIVATED';
+    public const CLIENT_REACTIVATED = 'CLIENT_REACTIVATED';
 
     public const ACCESS_DENIED = 'ACCESS_DENIED';
     public const AUDIT_EXPORTED = 'EXPORT';

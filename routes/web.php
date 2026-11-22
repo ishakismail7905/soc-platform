@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ClientController as AdminClientController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SecurityController;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,9 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
     Route::middleware('security.setup')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
+        // FR-14 reference pattern: scoped lookup, same 403 for missing and foreign records.
+        Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
+
         // Users & Roles (wireframe 14). Super Admin only: Table 3.2 users.manage.
         Route::middleware('can:users.manage')->prefix('admin/users')->name('admin.users.')
             ->controller(UserController::class)->group(function () {
@@ -33,6 +38,18 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
                 Route::post('/{user}/unlock', 'unlock')->name('unlock');
                 Route::post('/{user}/reset-password', 'resetPassword')->name('reset-password');
                 Route::post('/{user}/reset-two-factor', 'resetTwoFactor')->name('reset-two-factor');
+            });
+
+        // Clients (wireframe 22). Super Admin only: Table 3.2 clients.manage. No delete route (NFR-7).
+        Route::middleware('can:clients.manage')->prefix('admin/clients')->name('admin.clients.')
+            ->controller(AdminClientController::class)->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('/{client}/edit', 'edit')->name('edit');
+                Route::put('/{client}', 'update')->name('update');
+                Route::post('/{client}/deactivate', 'deactivate')->name('deactivate');
+                Route::post('/{client}/reactivate', 'reactivate')->name('reactivate');
             });
     });
 });
