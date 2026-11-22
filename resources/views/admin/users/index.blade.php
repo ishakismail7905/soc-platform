@@ -72,6 +72,8 @@
 
     @if ($panel === 'create')
         <div class="col-xl-4">@include('admin.users.partials.create')</div>
+    @elseif ($panel === 'edit')
+        <div class="col-xl-4">@include('admin.users.partials.edit')</div>
     @endif
 </div>
 @endsection

@@ -20,11 +20,19 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
         // Users & Roles (wireframe 14). Super Admin only: Table 3.2 users.manage.
-        Route::middleware('can:users.manage')->prefix('admin/users')->name('admin.users.')->group(function () {
-            Route::get('/', [UserController::class, 'index'])->name('index');
-            Route::get('/permissions', [UserController::class, 'permissions'])->name('permissions');
-            Route::get('/create', [UserController::class, 'create'])->name('create');
-            Route::post('/', [UserController::class, 'store'])->name('store');
-        });
+        Route::middleware('can:users.manage')->prefix('admin/users')->name('admin.users.')
+            ->controller(UserController::class)->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/permissions', 'permissions')->name('permissions');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('/{user}/edit', 'edit')->name('edit');
+                Route::put('/{user}', 'update')->name('update');
+                Route::post('/{user}/deactivate', 'deactivate')->name('deactivate');
+                Route::post('/{user}/reactivate', 'reactivate')->name('reactivate');
+                Route::post('/{user}/unlock', 'unlock')->name('unlock');
+                Route::post('/{user}/reset-password', 'resetPassword')->name('reset-password');
+                Route::post('/{user}/reset-two-factor', 'resetTwoFactor')->name('reset-two-factor');
+            });
     });
 });

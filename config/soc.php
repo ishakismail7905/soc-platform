@@ -22,4 +22,6 @@ return [
     // NFR1: Content Security Policy header. Off locally for the Vite dev server.
     'csp_enabled' => (bool) env('SOC_CSP_ENABLED', true),
 
+    // Demo accounts only (DemoSeeder). Never set in production.
+    'seed_password' => env('SEED_PASSWORD'),
 ];

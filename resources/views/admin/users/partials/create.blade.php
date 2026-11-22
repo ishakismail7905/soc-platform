@@ -31,17 +31,22 @@
                     @endforeach
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="client_ids" class="form-label small fw-semibold">Assigned clients</label>
-                <select id="client_ids" name="client_ids[]" class="form-select" multiple size="4" aria-describedby="client-help">
-                    @foreach ($clients as $client)
-                        <option value="{{ $client->id }}" @selected(in_array($client->id, old('client_ids', [])))>{{ $client->name }}</option>
-                    @endforeach
-                </select>
+            <fieldset class="mb-3" aria-describedby="client-help">
+                <legend class="form-label small fw-semibold mb-1">Assigned clients</legend>
+                @forelse ($clients as $client)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="client_ids[]" value="{{ $client->id }}"
+                               id="client-{{ $client->id }}"
+                               @checked(in_array($client->id, old('client_ids', [])))>
+                        <label class="form-check-label" for="client-{{ $client->id }}">{{ $client->name }}</label>
+                    </div>
+                @empty
+                    <p class="small text-body-secondary mb-0">No active clients yet.</p>
+                @endforelse
                 <div id="client-help" class="form-text">
                     SOC Analyst: one or more. Client Viewer: exactly one. Super Admin, IT Manager and Auditor: leave empty.
                 </div>
-            </div>
+            </fieldset>
             <p class="small text-body-secondary">
                 A temporary password is generated and shown once. At first sign-in the user must change it,
                 and set up two-factor authentication if their role requires it.
