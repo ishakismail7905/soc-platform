@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Enums\Role;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class DashboardController extends Controller
@@ -25,8 +24,7 @@ class DashboardController extends Controller
         }
 
         if ($user->role === Role::Auditor) {
-            // Task 10 builds the activity log; once it exists the Auditor lands there.
-            return Route::has('audit.index') ? redirect()->route('audit.index') : view('dashboard.auditor');
+            return redirect()->route('audit.index'); // the Auditor's home is the activity log
         }
 
         abort(403); // no role, no dashboard (fail closed)

@@ -36,7 +36,7 @@ class AppShellTest extends TestCase
         // Task 10 changes this to a redirect to the activity log.
         $this->signInAs(Role::Auditor);
 
-        $this->get('/dashboard')->assertOk()->assertViewIs('dashboard.auditor');
+        $this->get('/dashboard')->assertRedirect(route('audit.index'));
     }
 
     /** Menus copied from the wireframes: [role, must show, must not show]. */
@@ -66,7 +66,7 @@ class AppShellTest extends TestCase
     public function test_each_role_sees_its_own_menu(Role $role, array $show, array $hide): void
     {
         $this->signInAs($role);
-        $response = $this->get('/dashboard')->assertOk();
+        $response = $this->followingRedirects()->get('/dashboard')->assertOk();
 
         foreach ($show as $text) {
             $response->assertSee($text);
@@ -110,6 +110,6 @@ class AppShellTest extends TestCase
         $this->get('/dashboard')->assertSee('IT Manager · All clients');
 
         $this->signInAs(Role::Auditor);
-        $this->get('/dashboard')->assertSee('Auditor · Read-only');
+        $this->followingRedirects()->get('/dashboard')->assertSee('Auditor · Read-only');
     }
 }

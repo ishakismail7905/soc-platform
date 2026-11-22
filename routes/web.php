@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SecurityController;
+use App\Http\Controllers\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
 // No public home page: guests go to sign-in, signed-in users to their dashboard.
@@ -51,5 +52,9 @@ Route::middleware(['auth', 'account.usable'])->group(function () {
                 Route::post('/{client}/deactivate', 'deactivate')->name('deactivate');
                 Route::post('/{client}/reactivate', 'reactivate')->name('reactivate');
             });
+
+        // Activity log (wireframe 15). Read-only: GET only, no route edits or deletes a row.
+        Route::get('/audit', [AuditLogController::class, 'index'])->middleware('can:audit.view')->name('audit.index');
+        Route::get('/audit/export', [AuditLogController::class, 'export'])->middleware('can:audit.export')->name('audit.export');
     });
 });

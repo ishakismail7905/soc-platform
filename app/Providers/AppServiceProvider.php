@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
 use App\Support\Navigation;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,5 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Every time the sidebar is drawn, give it the menu for the signed-in user's role.
         View::composer('layouts.partials.sidebar', fn ($view) => $view->with('navigation', Navigation::for(auth()->user())));
+    
+        Paginator::useBootstrapFive();
     }
 }

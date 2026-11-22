@@ -34,4 +34,13 @@ final class AuditEvent
 
     public const ACCESS_DENIED = 'ACCESS_DENIED';
     public const AUDIT_EXPORTED = 'EXPORT';
+
+    /** Every event code, for the activity-log filter and its validation. @return list<string> */
+    public static function all(): array
+    {
+        $codes = array_values(array_unique((new \ReflectionClass(self::class))->getConstants()));
+        sort($codes);
+
+        return $codes;
+    }
 }

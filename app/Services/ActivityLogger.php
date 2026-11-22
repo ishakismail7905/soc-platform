@@ -24,6 +24,13 @@ class ActivityLogger
 
     public function log(string $event, ?Model $subject = null, array $properties = [], ?User $actor = null): ActivityLog
     {
+
+        // Pre-login events (failed login, lockout, failed 2FA) have no signed-in actor.
+        // Record the targeted account's role at that moment, for the activity log (wireframe 15).
+        if ($actor === null && auth()->guest() && $subject instanceof User && ! array_key_exists('target_role', $properties)) {
+            $properties['target_role'] = $subject->role?->value;
+        }
+
         $actor ??= auth()->user();
         $request = request();
         $userAgent = $request?->userAgent();
