@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Host: localhost:8080
+Connection: close
+X-Powered-By: PHP/8.5.11
+Content-Type: text/html; charset=utf-8
+Cache-Control: no-cache, private
+Date: Tue, 24 Nov 2026 10:36:17 GMT
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), microphone=(), geolocation=()
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+Set-Cookie: XSRF-TOKEN=eyJpdiI6Im1BNmlHOHVSMTUrc3RNY0hNNC81Umc9PSIsInZhbHVlIjoic3J2VnVsajNCeXFZT2FHTGgwM0tIeUU1Zk9NUktUckdoUWtVWDJXc2lWc3dHa3RFb3hjYTMvN1FKY0RJOGNWSHY2U2ZjZGI0MTZkUUVRKzJjcjY3S1dhdy9ncmhnWVlqSm9tVGp6NjI2bWJFdnJ5ZGNFMzVUMU56V3dRY09OaVciLCJtYWMiOiJmZGE0ZDExZjFmMDdhNTliYWQ3MGIxNWQ5YTdmMTg4MDNkNjFkZjg1NGQxOTgxZjRkZTE1NGM5MGM2YWIyYjRjIiwidGFnIjoiIn0%3D; expires=Tue, 24 Nov 2026 10:51:17 GMT; Max-Age=900; path=/; samesite=strict
+Set-Cookie: ardia-soc-session=eyJpdiI6IjduRTkrbFV2RkprUTROVVBHNE5UNmc9PSIsInZhbHVlIjoiYjR6TlBoSGpyMXc5NmVyZzJMdUs2dWxISXY3V2lXa2hCRlMxcno1WlFEUTFQUVk4eVovZUVtMThFdTdrc2NrS2prcW9IS0YwaXV5Mk5UVUVScGN0b0hkVjV0dmJ6MWppWVMvSmNlam5UNUN0L3BVb0VQU2FGRTdIWGVRS2lDZ0ciLCJtYWMiOiJmZjc1ZjVjOWYwNzczYmE5ZmI3YmI1MmRjN2U3NmM1OTUxOTgxMjJiMzViNjk5NGJmOTA4NWFlMDliYmMzYjdkIiwidGFnIjoiIn0%3D; path=/; httponly; samesite=strict
+
