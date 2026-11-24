@@ -10,7 +10,7 @@
     <main class="container auth-container">
         <div class="text-center mb-4">
             <div class="fw-bold fs-4">Ardia Nexus SOC</div>
-            <div class="text-body-secondary small">Security Operations Centre</div>
+            <div class="text-body-secondary small">Centralized SOC Management System</div>
         </div>
         @yield('content')
     </main>

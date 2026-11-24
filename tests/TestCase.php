@@ -16,7 +16,8 @@ abstract class TestCase extends BaseTestCase
     /** Create a user with a role (and optional clients) and log in as them. */
     protected function actingAsRole(Role $role, array $clients = []): User
     {
-        $user = User::factory()->withRole($role)->forClients(...$clients)->twoFactorConfirmed()->create();        $this->actingAs($user);
+        $user = User::factory()->withRole($role)->forClients(...$clients)->twoFactorConfirmed()->create();
+        $this->actingAs($user);
 
         return $user;
     }

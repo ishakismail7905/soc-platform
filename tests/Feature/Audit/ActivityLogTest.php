@@ -3,7 +3,6 @@
 namespace Tests\Feature\Audit;
 
 use App\Enums\Role;
-use App\Models\ActivityLog;
 use App\Services\ActivityLogger;
 use App\Support\AuditEvent;
 use Illuminate\Database\QueryException;

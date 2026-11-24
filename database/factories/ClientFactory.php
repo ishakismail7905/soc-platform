@@ -19,7 +19,7 @@ class ClientFactory extends Factory
     {
         // Fictional demo clients only (UAT condition: no real client data).
         return [
-            'name' => fake()->unique()->company() . ' Sdn Bhd',
+            'name' => fake()->unique()->company().' Sdn Bhd',
             'code' => strtoupper(fake()->unique()->bothify('??###')),
             'is_active' => true,
         ];

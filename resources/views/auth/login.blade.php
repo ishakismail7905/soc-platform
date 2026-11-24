@@ -26,7 +26,7 @@
         <form method="POST" action="{{ route('login') }}" novalidate>
             @csrf
             <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
+                <label for="email" class="form-label">Email (individual account)</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}"
                        class="form-control" required autofocus autocomplete="username">
             </div>
@@ -40,7 +40,8 @@
 
         <p class="text-body-secondary small text-center mt-4 mb-0">
             Forgot your password? Contact your Super Admin.<br>
-            Accounts lock after 5 failed attempts.
+            Accounts lock after 5 failed attempts.<br>
+            HTTPS only · No shared logins
         </p>
     </div>
 </div>

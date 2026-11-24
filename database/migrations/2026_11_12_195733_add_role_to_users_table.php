@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-     public function up(): void
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             // One role per user (Table 3.2). Nullable: a user with no role gets no access.

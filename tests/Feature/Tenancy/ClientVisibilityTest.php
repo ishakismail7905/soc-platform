@@ -10,7 +10,9 @@ use Tests\TestCase;
 class ClientVisibilityTest extends TestCase
 {
     private Client $a;
+
     private Client $b;
+
     private Client $c;
 
     protected function setUp(): void

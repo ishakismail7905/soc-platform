@@ -29,7 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
         // NFR-1 rate limiting. Set above the 5-attempt lockout (Task 5),
         // so a user meets the lockout message first, not a throttle.
         RateLimiter::for('login', fn (Request $request) => Limit::perMinute(10)
-            ->by(Str::lower((string) $request->input(Fortify::username())) . '|' . $request->ip()));
+            ->by(Str::lower((string) $request->input(Fortify::username())).'|'.$request->ip()));
 
         RateLimiter::for('two-factor', fn (Request $request) => Limit::perMinute(5)
             ->by($request->session()->get('login.id')));

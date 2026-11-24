@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Admin\ClientController as AdminClientController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AuditLogController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SecurityController;
-use App\Http\Controllers\AuditLogController;
 use Illuminate\Support\Facades\Route;
 
 // No public home page: guests go to sign-in, signed-in users to their dashboard.

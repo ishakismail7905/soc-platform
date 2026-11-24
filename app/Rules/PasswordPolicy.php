@@ -12,7 +12,7 @@ final class PasswordPolicy
     {
         $rules = [
             'required', 'string',
-            'min:' . config('soc.password.min_length'), // 12 (FR-11)
+            'min:'.config('soc.password.min_length'), // 12 (FR-11)
             'max:64',                                    // NIST SP 800-63B-4 minimum maximum; stays under bcrypt's 72-byte limit
             'confirmed',
         ];

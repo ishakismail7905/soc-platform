@@ -1,0 +1,178 @@
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.users ..............................................................  
+  Columns ................................................................. 19  
+  Size .............................................................. 48.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  id bigint, autoincrement ................................... bigint unsigned  
+  name varchar, utf8mb4_unicode_ci .............................. varchar(255)  
+  email varchar, utf8mb4_unicode_ci ............................. varchar(255)  
+  role varchar, nullable, utf8mb4_unicode_ci ..................... varchar(20)  
+  is_active tinyint ............................................. 1 tinyint(1)  
+  locked_at timestamp, nullable .................................... timestamp  
+  failed_login_attempts tinyint ........................... 0 tinyint unsigned  
+  must_change_password tinyint .................................. 0 tinyint(1)  
+  password_changed_at timestamp, nullable .......................... timestamp  
+  last_login_at timestamp, nullable ................................ timestamp  
+  last_login_ip varchar, nullable, utf8mb4_unicode_ci ............ varchar(45)  
+  email_verified_at timestamp, nullable ............................ timestamp  
+  password varchar, utf8mb4_unicode_ci .......................... varchar(255)  
+  two_factor_secret text, nullable, utf8mb4_unicode_ci .................. text  
+  two_factor_recovery_codes text, nullable, utf8mb4_unicode_ci .......... text  
+  two_factor_confirmed_at timestamp, nullable ...................... timestamp  
+  remember_token varchar, nullable, utf8mb4_unicode_ci .......... varchar(100)  
+  created_at timestamp, nullable ................................... timestamp  
+  updated_at timestamp, nullable ................................... timestamp  
+
+  Index ......................................................................  
+  primary id .................................................. btree, primary  
+  users_email_unique email ..................................... btree, unique  
+  users_role_index role ................................................ btree  
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.clients ............................................................  
+  Columns .................................................................. 6  
+  Size .............................................................. 48.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  id bigint, autoincrement ................................... bigint unsigned  
+  name varchar, utf8mb4_unicode_ci .............................. varchar(150)  
+  code varchar, utf8mb4_unicode_ci ............................... varchar(20)  
+  is_active tinyint ............................................. 1 tinyint(1)  
+  created_at timestamp, nullable ................................... timestamp  
+  updated_at timestamp, nullable ................................... timestamp  
+
+  Index ......................................................................  
+  clients_code_unique code ..................................... btree, unique  
+  clients_name_unique name ..................................... btree, unique  
+  primary id .................................................. btree, primary  
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.client_user ........................................................  
+  Columns .................................................................. 4  
+  Size .............................................................. 32.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  client_id bigint ........................................... bigint unsigned  
+  user_id bigint ............................................. bigint unsigned  
+  created_at timestamp, nullable ................................... timestamp  
+  updated_at timestamp, nullable ................................... timestamp  
+
+  Index ......................................................................  
+  client_user_user_id_foreign user_id .................................. btree  
+  primary client_id, user_id ........................ btree, compound, primary  
+
+  Foreign Key .......................................... On Update / On Delete  
+  client_user_client_id_foreign client_id references id on clients  no action / cascade  
+  client_user_user_id_foreign user_id references id on users  no action / cascade  
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.password_histories .................................................  
+  Columns .................................................................. 4  
+  Size .............................................................. 32.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  id bigint, autoincrement ................................... bigint unsigned  
+  user_id bigint ............................................. bigint unsigned  
+  password varchar, utf8mb4_unicode_ci .......................... varchar(255)  
+  created_at timestamp ........................... CURRENT_TIMESTAMP timestamp  
+
+  Index ......................................................................  
+  password_histories_user_id_foreign user_id ........................... btree  
+  primary id .................................................. btree, primary  
+
+  Foreign Key .......................................... On Update / On Delete  
+  password_histories_user_id_foreign user_id references id on users  no action / cascade  
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.activity_logs ......................................................  
+  Columns ................................................................. 13  
+  Size ............................................................. 128.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  id bigint, autoincrement ................................... bigint unsigned  
+  occurred_at datetime .............................................. datetime  
+  user_id bigint, nullable ................................... bigint unsigned  
+  role varchar, nullable, utf8mb4_unicode_ci ..................... varchar(20)  
+  client_id bigint, nullable ................................. bigint unsigned  
+  event varchar, utf8mb4_unicode_ci .............................. varchar(40)  
+  subject_type varchar, nullable, utf8mb4_unicode_ci ............ varchar(255)  
+  subject_id bigint, nullable ................................ bigint unsigned  
+  ip_address varchar, nullable, utf8mb4_unicode_ci ............... varchar(45)  
+  user_agent varchar, nullable, utf8mb4_unicode_ci .............. varchar(255)  
+  properties longtext, nullable, utf8mb4_unicode_ci ................. longtext  
+  prev_hash char, utf8mb4_unicode_ci ................................ char(64)  
+  hash char, utf8mb4_unicode_ci ..................................... char(64)  
+
+  Index ......................................................................  
+  activity_logs_client_id_foreign client_id ............................ btree  
+  activity_logs_event_index event ...................................... btree  
+  activity_logs_hash_unique hash ............................... btree, unique  
+  activity_logs_subject_type_subject_id_index subject_type, subject_id  btree, compound  
+  activity_logs_user_id_foreign user_id ................................ btree  
+  primary id .................................................. btree, primary  
+
+  Foreign Key .......................................... On Update / On Delete  
+  activity_logs_client_id_foreign client_id references id on clients  no action / restrict  
+  activity_logs_user_id_foreign user_id references id on users  no action / restrict  
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  laravel.sessions ...........................................................  
+  Columns .................................................................. 6  
+  Size .............................................................. 48.00 KB  
+  Engine .............................................................. InnoDB  
+  Collation ............................................... utf8mb4_unicode_ci  
+
+  Column ................................................................ Type  
+  id varchar, utf8mb4_unicode_ci ................................ varchar(255)  
+  user_id bigint, nullable ................................... bigint unsigned  
+  ip_address varchar, nullable, utf8mb4_unicode_ci ............... varchar(45)  
+  user_agent text, nullable, utf8mb4_unicode_ci ......................... text  
+  payload longtext, utf8mb4_unicode_ci .............................. longtext  
+  last_activity int ...................................................... int  
+
+  Index ......................................................................  
+  primary id .................................................. btree, primary  
+  sessions_last_activity_index last_activity ........................... btree  
+  sessions_user_id_index user_id ....................................... btree  
+
+[4m>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0m[4m>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+[0mactivity_logs_block_update | BEFORE UPDATE | activity_logs
+activity_logs_block_delete | BEFORE DELETE | activity_logs

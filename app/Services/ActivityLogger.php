@@ -74,7 +74,7 @@ class ActivityLogger
         }
 
         // json_encode keeps field boundaries unambiguous (a value containing '|' can't fake another field).
-        return hash('sha256', $prevHash . json_encode($parts, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        return hash('sha256', $prevHash.json_encode($parts, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
     }
 
     /** Keys sorted recursively, so the same data always gives the same text and the same hash. */

@@ -81,4 +81,12 @@ class LoginTest extends TestCase
 
         $this->get('/')->assertRedirect('/dashboard');
     }
+
+    public function test_login_page_wording_matches_wireframe_01(): void
+    {
+        $this->get('/login')->assertOk()
+            ->assertSee('Centralized SOC Management System')
+            ->assertSee('Email (individual account)')
+            ->assertSee('HTTPS only · No shared logins');
+    }
 }

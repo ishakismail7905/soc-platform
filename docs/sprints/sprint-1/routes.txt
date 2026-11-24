@@ -1,0 +1,204 @@
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+  GET|HEAD  / .............................................. routes/web.php:12
+            ⇂ web
+  GET|HEAD  admin/clients . admin.clients.index › Admin\ClientController@index
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  POST      admin/clients . admin.clients.store › Admin\ClientController@store
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  GET|HEAD  admin/clients/create admin.clients.create › Admin\ClientController@create
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  PUT       admin/clients/{client} admin.clients.update › Admin\ClientController@update
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  POST      admin/clients/{client}/deactivate admin.clients.deactivate › Admin\ClientController@deactivate
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  GET|HEAD  admin/clients/{client}/edit admin.clients.edit › Admin\ClientController@edit
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  POST      admin/clients/{client}/reactivate admin.clients.reactivate › Admin\ClientController@reactivate
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:clients.manage
+  GET|HEAD  admin/users ....... admin.users.index › Admin\UserController@index
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users ....... admin.users.store › Admin\UserController@store
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  GET|HEAD  admin/users/create admin.users.create › Admin\UserController@create
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  GET|HEAD  admin/users/permissions admin.users.permissions › Admin\UserController@permissions
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  PUT       admin/users/{user} admin.users.update › Admin\UserController@update
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users/{user}/deactivate admin.users.deactivate › Admin\UserController@deactivate
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  GET|HEAD  admin/users/{user}/edit admin.users.edit › Admin\UserController@edit
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users/{user}/reactivate admin.users.reactivate › Admin\UserController@reactivate
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users/{user}/reset-password admin.users.reset-password › Admin\UserController@resetPassword
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users/{user}/reset-two-factor admin.users.reset-two-factor › Admin\UserController@resetTwoFactor
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  POST      admin/users/{user}/unlock admin.users.unlock › Admin\UserController@unlock
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:users.manage
+  GET|HEAD  audit ..................... audit.index › AuditLogController@index
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:audit.view
+  GET|HEAD  audit/export ............ audit.export › AuditLogController@export
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+            ⇂ can:audit.export
+  GET|HEAD  clients/{id} ................ clients.show › ClientController@show
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+  GET|HEAD  dashboard ........................ dashboard › DashboardController
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+            ⇂ security.setup
+  GET|HEAD  login login › Laravel\Fortify › AuthenticatedSessionController@create
+            ⇂ web
+            ⇂ guest:web
+  POST      login login.store › Laravel\Fortify › AuthenticatedSessionController@store
+            ⇂ web
+            ⇂ guest:web
+            ⇂ throttle:login
+  POST      logout logout › Laravel\Fortify › AuthenticatedSessionController@destroy
+            ⇂ web
+            ⇂ auth:web
+  GET|HEAD  security ................. security.edit › SecurityController@edit
+            ⇂ web
+            ⇂ auth
+            ⇂ account.usable
+  GET|HEAD  storage/{path} storage.local › vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServiceProvider.php:111
+  PUT       storage/{path} storage.local.upload › vendor/laravel/framework/src/Illuminate/Filesystem/FilesystemServiceProvider.php:119
+  GET|HEAD  two-factor-challenge two-factor.login › Laravel\Fortify › TwoFactorAuthenticatedSessionController@create
+            ⇂ web
+            ⇂ guest:web
+  POST      two-factor-challenge two-factor.login.store › Laravel\Fortify › TwoFactorAuthenticatedSessionController@store
+            ⇂ web
+            ⇂ guest:web
+            ⇂ throttle:two-factor
+  GET|HEAD  up ........................... Illuminate\Foundation › HealthCheck
+  GET|HEAD  user/confirm-password password.confirm › Laravel\Fortify › ConfirmablePasswordController@show
+            ⇂ web
+            ⇂ auth:web
+  POST      user/confirm-password password.confirm.store › Laravel\Fortify › ConfirmablePasswordController@store
+            ⇂ web
+            ⇂ auth:web
+  GET|HEAD  user/confirmed-password-status password.confirmation › Laravel\Fortify › ConfirmedPasswordStatusController@show
+            ⇂ web
+            ⇂ auth:web
+  POST      user/confirmed-two-factor-authentication two-factor.confirm › Laravel\Fortify › ConfirmedTwoFactorAuthenticationController@store
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  PUT       user/password user-password.update › Laravel\Fortify › PasswordController@update
+            ⇂ web
+            ⇂ auth:web
+  POST      user/two-factor-authentication two-factor.enable › Laravel\Fortify › TwoFactorAuthenticationController@store
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  DELETE    user/two-factor-authentication two-factor.disable › Laravel\Fortify › TwoFactorAuthenticationController@destroy
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  GET|HEAD  user/two-factor-qr-code two-factor.qr-code › Laravel\Fortify › TwoFactorQrCodeController@show
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  GET|HEAD  user/two-factor-recovery-codes two-factor.recovery-codes › Laravel\Fortify › RecoveryCodeController@index
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  POST      user/two-factor-recovery-codes two-factor.regenerate-recovery-codes › Laravel\Fortify › RecoveryCodeController@store
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+  GET|HEAD  user/two-factor-secret-key two-factor.secret-key › Laravel\Fortify › TwoFactorSecretKeyController@show
+            ⇂ web
+            ⇂ auth:web
+            ⇂ password.confirm
+
+                                                           Showing [43] routes
+

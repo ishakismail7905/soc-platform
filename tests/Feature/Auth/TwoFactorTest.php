@@ -149,4 +149,12 @@ class TwoFactorTest extends TestCase
         $this->assertDatabaseHas('activity_logs', ['event' => AuditEvent::AUTH_RECOVERY_CODE_USED, 'subject_id' => $user->id]);
         $this->assertNotContains($code, $user->fresh()->recoveryCodes());
     }
+
+    public function test_enrolment_wording_matches_wireframe_02(): void
+    {
+        $user = User::factory()->withRole(Role::SocAnalyst)->create();
+
+        $this->actingAs($user)->get('/security')->assertOk()
+            ->assertSee('Required for Super Admin, IT Manager, SOC Analyst and Auditor. Optional for Client Viewer.');
+    }
 }

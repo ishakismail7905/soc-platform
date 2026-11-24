@@ -103,7 +103,7 @@
         @else
             <h2 class="h5 mb-1">Set up two-factor authentication</h2>
             <p class="text-body-secondary small mb-3">
-                {{ $roleRequiresTwoFactor ? 'Required for your role.' : 'Optional for your role, but recommended.' }}
+                Required for Super Admin, IT Manager, SOC Analyst and Auditor. Optional for Client Viewer.
                 You will need an authenticator app on your phone.
             </p>
 

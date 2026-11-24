@@ -3,14 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Enums\Role;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Enums\Role;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 
 #[Fillable(['name', 'email', 'password'])]
@@ -61,7 +62,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Client::class)->withTimestamps();
     }
 
-    public function passwordHistories(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function passwordHistories(): HasMany
     {
         return $this->hasMany(PasswordHistory::class);
     }

@@ -45,7 +45,7 @@ class AppShellTest extends TestCase
         return [
             'super admin' => [Role::SuperAdmin,
                 ['OVERVIEW', 'Dashboard', 'Alert Queue', 'Incident Cases', 'ADMINISTRATION', 'Correlation Rules',
-                 'Alert Sources', 'Response Targets', 'Users & Roles', 'Clients', 'System Settings', 'Audit Log', 'OUTPUT', 'Reports'],
+                    'Alert Sources', 'Response Targets', 'Users & Roles', 'Clients', 'System Settings', 'Audit Log', 'OUTPUT', 'Reports'],
                 ['My Workspace', 'My Cases', 'Monthly Reports', 'Closed Cases']],
             'it manager' => [Role::ItManager,
                 ['OVERVIEW', 'Dashboard', 'Alert Queue', 'Incident Cases', 'CONFIGURATION', 'Correlation Rules', 'Reports'],

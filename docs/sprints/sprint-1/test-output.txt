@@ -1,0 +1,172 @@
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+>>>> Executing external compose provider "/usr/libexec/docker/cli-plugins/docker-compose". Please see podman-compose(1) for how to disable this message. <<<<
+
+
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
+
+   PASS  Tests\Feature\Admin\ClientManagementTest
+  ✓ only super admin manages clients with data set "it manager"          1.99s  
+  ✓ only super admin manages clients with data set "soc analyst"         0.02s  
+  ✓ only super admin manages clients with data set "client viewer"       0.02s  
+  ✓ only super admin manages clients with data set "auditor"             0.02s  
+  ✓ super admin adds a client and it is logged                           0.02s  
+  ✓ codes and names must be unique and well formed                       0.03s  
+  ✓ rename is logged with from and to                                    0.02s  
+  ✓ clients are deactivated never deleted                                0.14s  
+  ✓ table counts assigned analysts and viewers                           0.02s  
+
+   PASS  Tests\Feature\Admin\UserLifecycleTest
+  ✓ edit panel matches wireframe 14                                      0.03s  
+  ✓ role change is logged with from and to                               0.02s  
+  ✓ client change is logged with from and to                             0.03s  
+  ✓ deactivation ends sessions and reactivation restores access          0.02s  
+  ✓ super admin cannot deactivate or demote themself                     0.02s  
+  ✓ the last usable super admin can never be removed                     0.01s  
+  ✓ unlock clears the lock and the counter                               0.02s  
+  ✓ force password reset issues a new temporary password and ends sessi… 0.02s  
+  ✓ reset two factor forces re enrolment and ends sessions               0.02s  
+  ✓ non admins cannot use any account action                             0.04s  
+  ✓ demo seeder creates fictional accounts that must change their passw… 0.04s  
+  ✓ demo seeder refuses a weak or missing seed password                  0.01s  
+
+   PASS  Tests\Feature\Admin\UserManagementTest
+  ✓ only super admin can open or use user admin with data set "it manag… 0.03s  
+  ✓ only super admin can open or use user admin with data set "soc anal… 0.02s  
+  ✓ only super admin can open or use user admin with data set "client v… 0.02s  
+  ✓ only super admin can open or use user admin with data set "auditor"  0.02s  
+  ✓ super admin sees the user table and it is never cached               0.02s  
+  ✓ create analyst with clients and a one time temporary password        0.03s  
+  ✓ temporary password cannot be kept as the new password                0.03s  
+  ✓ client assignment follows the role                                   0.04s  
+  ✓ unknown role and duplicate email are rejected                        0.02s  
+  ✓ extra fields in the request are ignored                              0.02s  
+  ✓ permissions tab is drawn from the code                               0.02s  
+
+   PASS  Tests\Feature\Audit\ActivityLogTest
+  ✓ log records actor role ip and links the chain                        0.02s  
+  ✓ the app cannot update or delete a log entry                          0.01s  
+  ✓ the database rejects raw update and delete                           0.01s  
+  ✓ verify passes on a clean chain and catches a forged row              0.02s  
+
+   PASS  Tests\Feature\Audit\AuditViewerTest
+  ✓ only super admin and auditor can view                                0.04s  
+  ✓ filter by event                                                      0.02s  
+  ✓ filter by user includes events about them                            0.03s  
+  ✓ filter by dates and reject a backwards range                         0.02s  
+  ✓ pre login rows show the target account and its role                  0.03s  
+  ✓ attacker text in the log is shown as text not run as code            0.02s  
+  ✓ export is logged first and formula safe                              0.02s  
+  ✓ export needs the export permission                                   0.02s  
+  ✓ no route can change the log                                          0.01s  
+
+   PASS  Tests\Feature\Auth\LockoutTest
+  ✓ fifth failure locks the account and raises an alert event            0.05s  
+  ✓ each failure is counted and logged exactly once                      0.02s  
+  ✓ locked user is refused even with the correct password                0.02s  
+  ✓ successful login resets the counter                                  0.02s  
+  ✓ unknown email behaves exactly like a real account                    0.04s  
+  ✓ deactivated user cannot log in                                       0.02s  
+  ✓ deactivated user is thrown out on the next request                   0.02s  
+  ✓ locked user is thrown out on the next request                        0.02s  
+
+   PASS  Tests\Feature\Auth\LoginTest
+  ✓ self registration and email reset do not exist                       0.02s  
+  ✓ login page renders                                                   0.01s  
+  ✓ valid login redirects and is logged with role and ip                 0.02s  
+  ✓ email is case insensitive                                            0.02s  
+  ✓ wrong password and unknown email get the same message                0.02s  
+  ✓ logout is logged                                                     0.02s  
+  ✓ home sends guests to sign in                                         0.01s  
+  ✓ home sends signed in users to their dashboard                        0.01s  
+  ✓ login page wording matches wireframe 01                              0.01s  
+
+   PASS  Tests\Feature\Auth\PasswordPolicyTest
+  ✓ minimum 12 characters and no composition rules                       0.02s  
+  ✓ up to 64 characters allowed                                          0.01s  
+  ✓ confirmation must match                                              0.01s  
+  ✓ last five passwords cannot be reused                                 0.04s  
+  ✓ password change is logged and clears forced change                   0.02s  
+
+   PASS  Tests\Feature\Auth\SessionEndTest
+  ✓ expired session shows session ended                                  0.02s  
+  ✓ plain guest does not see session ended                               0.01s  
+  ✓ sign in sets the marker and sign out clears it                       0.02s  
+  ✓ idle sessions are logged out and removed                             0.02s  
+  ✓ laravel does not delete sessions before we log them                  0.01s  
+
+   PASS  Tests\Feature\Auth\TwoFactorTest
+  ✓ unenrolled internal user is sent to security page with data set "su… 0.02s  
+  ✓ unenrolled internal user is sent to security page with data set "it… 0.01s  
+  ✓ unenrolled internal user is sent to security page with data set "so… 0.01s  
+  ✓ unenrolled internal user is sent to security page with data set "au… 0.01s  
+  ✓ client viewer may skip two factor                                    0.02s  
+  ✓ user without role is sent to security page                           0.01s  
+  ✓ must change password is forced even when enrolled                    0.02s  
+  ✓ enrolled user reaches the dashboard                                  0.02s  
+  ✓ security page opens for an unenrolled user                           0.02s  
+  ✓ every app route behind auth has the security gate                    0.01s  
+  ✓ enrol then sign in with a code                                       0.04s  
+  ✓ disabling two factor is logged and forces re enrolment               0.02s  
+  ✓ recovery code works once and is logged                               0.03s  
+  ✓ enrolment wording matches wireframe 02                               0.02s  
+
+   PASS  Tests\Feature\Rbac\RolePermissionMatrixTest
+  ✓ role has exactly its permissions with data set "super admin"         0.02s  
+  ✓ role has exactly its permissions with data set "it manager"          0.01s  
+  ✓ role has exactly its permissions with data set "soc analyst"         0.01s  
+  ✓ role has exactly its permissions with data set "client viewer"       0.01s  
+  ✓ role has exactly its permissions with data set "auditor"             0.01s  
+  ✓ gates follow the matrix with data set "super admin"                  0.01s  
+  ✓ gates follow the matrix with data set "it manager"                   0.01s  
+  ✓ gates follow the matrix with data set "soc analyst"                  0.01s  
+  ✓ gates follow the matrix with data set "client viewer"                0.01s  
+  ✓ gates follow the matrix with data set "auditor"                      0.01s  
+  ✓ user without role is denied everything                               0.01s  
+  ✓ there are 22 permissions and client viewer has only portal ones      0.01s  
+
+   PASS  Tests\Feature\Security\HeadersTest
+  ✓ security headers are on every page                                   0.02s  
+  ✓ headers are also on pages that do not exist                          0.01s  
+  ✓ csp can be switched off for local debugging                          0.01s  
+  ✓ hsts is sent only over https                                         0.01s  
+  ✓ session cookie is locked down                                        0.01s  
+
+   PASS  Tests\Feature\SmokeTest
+  ✓ health route responds                                                0.01s  
+  ✓ app runs in malaysia time with 15 minute sessions                    0.01s  
+  ✓ frontend uses bootstrap not tailwind                                 0.01s  
+
+   PASS  Tests\Feature\Tenancy\ClientIsolationTest
+  ✓ client viewer gets the same 403 for another client and a missing on… 0.03s  
+  ✓ analyst is limited to assigned clients and managers see all          0.03s  
+  ✓ every refused request is logged as access denied                     0.02s  
+
+   PASS  Tests\Feature\Tenancy\ClientVisibilityTest
+  ✓ all client roles see every client                                    0.02s  
+  ✓ analyst sees only assigned clients                                   0.02s  
+  ✓ client viewer sees only own client                                   0.02s  
+  ✓ analyst with no assigned clients sees nothing                        0.02s  
+  ✓ user without role sees nothing even if linked to a client            0.02s  
+
+   PASS  Tests\Feature\Ui\AppShellTest
+  ✓ internal roles get the internal dashboard                            0.02s  
+  ✓ client viewer gets the client dashboard                              0.02s  
+  ✓ auditor gets no operational dashboard                                0.02s  
+  ✓ each role sees its own menu with data set "super admin"              0.02s  
+  ✓ each role sees its own menu with data set "it manager"               0.02s  
+  ✓ each role sees its own menu with data set "soc analyst"              0.02s  
+  ✓ each role sees its own menu with data set "client viewer"            0.02s  
+  ✓ each role sees its own menu with data set "auditor"                  0.02s  
+  ✓ pages not built yet are disabled not links                           0.02s  
+  ✓ current page is marked active                                        0.02s  
+  ✓ top bar shows role scope malaysia time and logout                    0.02s  
+  ✓ scope labels for all client roles                                    0.02s  
+
+   PASS  Tests\Feature\Ui\ForbiddenPageTest
+  ✓ forbidden page matches wireframe 20 and leaks nothing                0.03s  
+
+  Tests:    128 passed (675 assertions)
+  Duration: 4.65s
+

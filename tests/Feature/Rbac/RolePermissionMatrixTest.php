@@ -23,14 +23,14 @@ class RolePermissionMatrixTest extends TestCase
             'cases.print_own', 'cases.view_closed', 'reports.export', 'dashboard.internal'];
 
         return [
-            'super_admin'   => ['super_admin', $all],
-            'it_manager'    => ['it_manager', ['alerts.view', 'alerts.triage', 'cases.view', 'cases.update_assigned',
-                                'cases.assign', 'cases.change_severity', 'cases.close', 'rules.manage',
-                                'reports.export', 'dashboard.internal']],
-            'soc_analyst'   => ['soc_analyst', ['alerts.view', 'alerts.triage', 'cases.view',
-                                'cases.update_assigned', 'cases.print_own', 'dashboard.internal']],
+            'super_admin' => ['super_admin', $all],
+            'it_manager' => ['it_manager', ['alerts.view', 'alerts.triage', 'cases.view', 'cases.update_assigned',
+                'cases.assign', 'cases.change_severity', 'cases.close', 'rules.manage',
+                'reports.export', 'dashboard.internal']],
+            'soc_analyst' => ['soc_analyst', ['alerts.view', 'alerts.triage', 'cases.view',
+                'cases.update_assigned', 'cases.print_own', 'dashboard.internal']],
             'client_viewer' => ['client_viewer', ['portal.view', 'portal.monthly_report', 'portal.comment']],
-            'auditor'       => ['auditor', ['audit.view', 'audit.export', 'cases.view_closed']],
+            'auditor' => ['auditor', ['audit.view', 'audit.export', 'cases.view_closed']],
         ];
     }
 

@@ -34,7 +34,7 @@ class AuthenticateUser
             $this->logger->log(AuditEvent::AUTH_FAILED, null, ['email' => $email, 'reason' => 'unknown']);
 
             // Key is a hash, so the cache never stores the typed email itself.
-            $key = 'login-fail:' . hash('sha256', $email);
+            $key = 'login-fail:'.hash('sha256', $email);
             Cache::add($key, 0, now()->addDay());
 
             if (Cache::increment($key) >= $maxAttempts) {
